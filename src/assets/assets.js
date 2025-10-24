@@ -18,7 +18,7 @@ export const assets = {
 export const menuItemsData = [
     { to: '/', label: 'Feed', Icon: Home },
     { to: '/messages', label: 'Messages', Icon: MessageCircle },
-    { to: '/connections', label: 'Connections', Icon: Users },
+    { to: '/connection', label: 'Connections', Icon: Users },
     { to: '/discover', label: 'Discover', Icon: Search },
     { to: '/profile', label: 'Profile', Icon: UserIcon },
 ];
