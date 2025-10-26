@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { dummyPostsData } from '../assets/assets';
+import Stories from '../components/Stories';
 
 const Feed = () => {
   const [feeds, setFeeds] = useState([]);
@@ -39,7 +40,7 @@ const Feed = () => {
   return (
     <div className='h-full overflow-y-scroll no-scrollbar py-10 xl:pr-5 flex items-start justify-center xl:gap-8'>
     <div>
-      <h1>STories</h1>
+      <Stories></Stories>
       <div className='p-4 space-y-6'>
         list of
       </div>
