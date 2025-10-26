@@ -37,13 +37,19 @@ const Feed = () => {
   }
 
   return (
-    <div className='h-full overflow-y-scroll no-scrollbar py-10 px-4'>
-      {feeds.map((post) => (
-        <div key={post.id} className="p-4 mb-4 bg-white rounded-lg shadow">
-          <h2 className="font-semibold text-gray-800">{post.title}</h2>
-          <p className="text-gray-600">{post.content}</p>
-        </div>
-      ))}
+    <div className='h-full overflow-y-scroll no-scrollbar py-10 xl:pr-5 flex items-start justify-center xl:gap-8'>
+    <div>
+      <h1>STories</h1>
+      <div className='p-4 space-y-6'>
+        list of
+      </div>
+    </div>
+    <div>
+      <div>
+        <h1>sposnsered</h1>
+      </div>
+      <h1>recent messeges</h1>
+    </div>
     </div>
   );
 };
