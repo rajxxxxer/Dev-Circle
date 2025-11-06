@@ -19,7 +19,7 @@ const Stories = () => {
   }, []);
 
   return (
-    <div className="w-screen sm:w-[calc(100vw-240px)] lg:max-w-2xl no-scrollbar overflow-x-auto px-4 py-4">
+    <div className="no-scrollbar w-screen sm:w-[calc(100vw-240px)] lg:max-w-2xl overflow-x-auto px-4 py-4">
       <div className="flex gap-4 pb-3">
         {/* Create Story Card */}
         <div
@@ -37,7 +37,7 @@ const Stories = () => {
         {/* Stories List */}
         {stories.map((story, idx) => (
           <div
-            onClick={() => { setViewStories(story) }}
+            onClick={() => { console.log("Story clicked:", story); setViewStories(story) }}
             key={idx}
             className="relative min-w-[120px] max-w-[120px] aspect-[3/4] rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 bg-gradient-to-b from-indigo-500 to-purple-600 group cursor-pointer"
           >
@@ -102,7 +102,7 @@ const Stories = () => {
         <StoryModal setShowModal={setShowModal} fetchStories={fetchStories} />
       )}
       {
-        viewStories&& <Storyview viewStories={viewStories} setViewStories={setViewStories} />
+        viewStories&& <Storyview viewStory={viewStories} setViewStory={setViewStories} />
       }
     </div>
   );
