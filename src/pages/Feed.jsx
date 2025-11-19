@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { dummyPostsData } from '../assets/assets';
+import { assets, dummyPostsData } from '../assets/assets';
 import Stories from '../components/Stories';
+import Postcard from '../components/Postcard';
+import Recent from '../components/Recent';
 
 const Feed = () => {
   const [feeds, setFeeds] = useState([]);
   const [loading, setLoading] = useState(false);
+ 
+
 
   const fetchFeeds = async () => {
     try {
       setLoading(true);
 
-      // simulate async fetch to show loading spinner
       await new Promise((resolve) => setTimeout(resolve, 500));
 
       setFeeds(dummyPostsData);
@@ -39,18 +42,24 @@ const Feed = () => {
 
   return (
     <div className='h-full overflow-y-scroll no-scrollbar py-10 xl:pr-5 flex items-start justify-center xl:gap-8'>
-    <div>
-      <Stories></Stories>
-      <div className='p-4 space-y-6'>
-        list of
-      </div>
-    </div>
-    <div>
       <div>
-        <h1>sposnsered</h1>
+        <Stories />
+        <div className='p-4 space-y-6'>
+          {feeds.map((post) => (
+            <Postcard key={post.id} post={post} />
+          ))}
+        </div>
       </div>
-      <h1>recent messeges</h1>
-    </div>
+
+      <div>
+        <div className='max-xl:hidden sticky top-0'>
+          <h1>sposnsered</h1>
+          <img src={assets.sponsored_img}></img>
+          <p>Email marketing</p>
+          <p></p>
+        </div>
+       <Recent />
+      </div>
     </div>
   );
 };
