@@ -1,72 +1,106 @@
-import React from 'react'
-import { dummyConnectionsData } from '../assets/assets'
-import { Eye, MessageSquare } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
+import React from "react";
+import { dummyConnectionsData } from "../assets/assets";
+import { Eye, MessageSquare } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
-const Messege = () => {
+const Message = () => {
   const nav = useNavigate();
 
   return (
-    <div className="w-full h-full p-6">
+    <div className="min-h-screen bg-gradient-to-br from-[#0f172a] via-[#020617] to-black p-8">
+      <div className="max-w-6xl mx-auto">
 
-      {/* Header */}
-      <div className="mb-6">
-        <h1 className="text-2xl font-bold text-gray-800">Messages</h1>
-        <p className="text-gray-500">Talk and connect with your friends</p>
-      </div>
+        {/* ===== Glass Wrapper ===== */}
+        <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 shadow-2xl">
 
-      {/* Users List */}
-      <div className="space-y-4">
-        {dummyConnectionsData.map((User) => (
-          <div
-            key={User._id}
-            className="flex items-center justify-between bg-white shadow-sm border rounded-xl p-4 hover:shadow-md transition"
-          >
-            {/* Left: Profile */}
-            <div className="flex items-center gap-4">
-              <img
-                src={User.profile_picture}
-                alt="profile"
-                className="w-12 h-12 object-cover rounded-full border"
-              />
-
-              <div className="leading-tight">
-                <p className="text-sm font-semibold text-gray-900">
-                  {User.full_name}
-                </p>
-                <p className="text-xs text-gray-500">@{User.username}</p>
-                {User.bio && (
-                  <p className="text-xs text-gray-600 mt-1">
-                    {User.bio}
-                  </p>
-                )}
-              </div>
-            </div>
-
-            {/* Right: Action Buttons */}
-            <div className="flex items-center gap-3">
-
-              <button
-                onClick={() => nav(`/messages/${User._id}`)}
-                className="p-2 rounded-lg hover:bg-blue-100 text-blue-600 transition"
-              >
-                <MessageSquare className="w-5 h-5" />
-              </button>
-
-              <button
-                onClick={() => nav(`/profile/${User._id}`)}
-                className="p-2 rounded-lg hover:bg-gray-200 text-gray-700 transition"
-              >
-                <Eye className="w-5 h-5" />
-              </button>
-
-            </div>
+          {/* ===== Header ===== */}
+          <div className="mb-10">
+            <h1 className="text-3xl font-bold text-white">Messages</h1>
+            <p className="text-gray-400 mt-1">
+              Talk and connect with your friends
+            </p>
           </div>
-        ))}
-      </div>
 
+          {/* ===== Users List ===== */}
+          <div className="space-y-5">
+            {dummyConnectionsData.map((user) => (
+              <div
+                key={user._id}
+                className="
+                  flex items-center justify-between
+                  bg-white/10 backdrop-blur-md
+                  border border-white/10
+                  rounded-2xl p-5
+                  shadow-lg
+                  hover:shadow-2xl hover:-translate-y-1
+                  transition-all duration-300
+                "
+              >
+                {/* ===== Left: Profile ===== */}
+                <div className="flex items-center gap-5">
+                  <img
+                    src={user.profile_picture}
+                    alt="profile"
+                    className="
+                      w-14 h-14 rounded-full object-cover
+                      border border-white/20
+                      ring-2 ring-white/10
+                    "
+                  />
+
+                  <div>
+                    <p className="text-lg font-semibold text-white">
+                      {user.full_name}
+                    </p>
+                    <p className="text-sm text-gray-400">
+                      @{user.username}
+                    </p>
+
+                    {user.bio && (
+                      <p className="text-sm text-gray-300 mt-1 max-w-md">
+                        {user.bio}
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                {/* ===== Right: Actions ===== */}
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={() => nav(`/messages/${user._id}`)}
+                    className="
+                      flex items-center gap-2
+                      px-4 py-2 rounded-xl
+                      bg-blue-600 text-white
+                      hover:bg-blue-700
+                      transition
+                    "
+                  >
+                    <MessageSquare className="w-4 h-4" />
+                    Message
+                  </button>
+
+                  <button
+                    onClick={() => nav(`/profile/${user._id}`)}
+                    className="
+                      px-4 py-2 rounded-xl
+                      border border-white/20
+                      text-gray-200
+                      hover:bg-white/10
+                      transition
+                    "
+                  >
+                    <Eye className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </div>
     </div>
   );
 };
 
-export default Messege;
+export default Message;
