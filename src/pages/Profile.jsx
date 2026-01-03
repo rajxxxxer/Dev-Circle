@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { dummyPostsData, dummyUserData } from "../assets/assets";
-import UserPro from "../components/userPro";
+
 import { useParams, Link } from "react-router-dom";
 import Postcard from "../components/Postcard";
 import moment from "moment";
