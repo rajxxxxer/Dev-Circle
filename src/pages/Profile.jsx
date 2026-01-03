@@ -4,6 +4,7 @@ import UserPro from "../components/userPro";
 import { useParams, Link } from "react-router-dom";
 import Postcard from "../components/Postcard";
 import moment from "moment";
+import Profilemodal from "../components/Profilemodal";
 
 const Profile = () => {
   const { profileid } = useParams();
@@ -166,7 +167,7 @@ const Profile = () => {
       {showEdit && (
         <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50">
           <div className="bg-[#0f172a] border border-white/20 rounded-2xl p-8 text-white">
-            Edit Profile (UI coming soon)
+            <Profilemodal setShowEdit={setShowEdit} />
           </div>
         </div>
       )}
