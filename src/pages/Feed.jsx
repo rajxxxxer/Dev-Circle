@@ -26,7 +26,7 @@ const Feed = () => {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-screen bg-slate-50">
+      <div className="flex items-center justify-center min-h-screen bg-slate-50">
         <div className="flex flex-col items-center gap-3">
           <div className="w-10 h-10 border-4 border-gray-300 border-t-blue-600 rounded-full animate-spin"></div>
           <p className="text-gray-600 font-medium">Loading...</p>
@@ -36,32 +36,37 @@ const Feed = () => {
   }
 
   return (
-    <div className="flex items-start justify-center xl:gap-8 py-10 xl:pr-5">
+    <div className="flex flex-col xl:flex-row justify-center gap-6 py-4 px-2 sm:px-4 xl:px-0">
 
-      {/* LEFT SIDE (scrollable feed) */}
-      <div className="w-full xl:w-[600px] overflow-y-auto no-scrollbar">
+      {/* ===== FEED ===== */}
+      <div className="w-full max-w-xl xl:max-w-[600px]">
         <Stories />
-        <div className="p-4 space-y-6">
+
+        <div className="mt-4 space-y-6">
           {feeds.map((post) => (
             <Postcard key={post.id} post={post} />
           ))}
         </div>
       </div>
 
-      {/* RIGHT SIDEBAR */}
-     <div className="w-72 sticky top-10 flex flex-col gap-6 mt-0 ml-3">
+      {/* ===== RIGHT SIDEBAR (DESKTOP ONLY) ===== */}
+      <div className="hidden xl:flex w-72 sticky top-10 flex-col gap-6">
 
-  {/* Sponsored Section */}
-  <div className="bg-white p-4 rounded-xl shadow border">
-    <h1 className="font-semibold text-gray-800">Sponsored</h1>
-    <img src={assets.sponsored_img} className="rounded-xl mt-2" />
-    <p className="text-sm text-gray-500 mt-1">Email marketing</p>
-  </div>
+        {/* Sponsored */}
+        <div className="bg-white p-4 rounded-xl shadow border">
+          <h1 className="font-semibold text-gray-800">Sponsored</h1>
+          <img
+            src={assets.sponsored_img}
+            className="rounded-xl mt-2 w-full"
+          />
+          <p className="text-sm text-gray-500 mt-1">
+            Email marketing
+          </p>
+        </div>
 
-  {/* Recent Messages */}
-  <Recent />
-</div>
-
+        {/* Recent */}
+        <Recent />
+      </div>
     </div>
   );
 };
